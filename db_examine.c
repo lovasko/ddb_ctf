@@ -206,14 +206,9 @@ db_print_cmd(addr, have_addr, count, modif)
 	char *		modif;
 {
 	db_expr_t	value;
-	linker_ctf_t    ctf;
 
 	if (modif[0] != '\0')
 	    db_print_format = modif[0];
-
-	db_printf("Hello world!");
-	linker_ctf_get(linker_kernel_file, &ctf);
-	db_printf("%d %d %d", ctf.ctfcnt, ctf.nsym, ctf.strcnt);
 
 	switch (db_print_format) {
 	    case 'a':
