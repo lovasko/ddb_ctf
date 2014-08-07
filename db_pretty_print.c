@@ -112,12 +112,13 @@ db_pretty_print_cmd(db_expr_t addr, boolean_t have_addr, db_expr_t count,
 	for (idx = 0;	idx < token_string_size[0]; idx++)
 		type_name[idx] = token_string[0][idx];
 	
-	/* append a space character */
-	type_name[idx] = ' ';
-	idx++;
 
 	/* copy the second argument if it exists */
 	if (t[1] != tEOL) {
+		/* append a space character */
+		type_name[idx] = ' ';
+		idx++;
+
 		for (; idx < token_string_size[0] + 1 + token_string_size[1]; idx++)
 			type_name[idx] = token_string[1][idx - token_string_size[0] - 1];
 	}
