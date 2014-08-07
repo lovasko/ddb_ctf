@@ -59,6 +59,9 @@ db_pretty_print()
 	if (!linker_ctf_get(linker_kernel_file, &kernel_ctf_data)) {
 		db_printf("ERROR: Unable to load the kernel CTF data.\n");
 		return;
+	} else {
+		db_printf("%d %d %d\n", kernel_ctf_data.ctfcnt, kernel_ctf_data.nsym, 
+			kernel_ctf_data.strcnt);
 	}
 }
 
