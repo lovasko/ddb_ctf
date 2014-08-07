@@ -39,9 +39,7 @@ db_hello_cmd(db_expr_t addr, boolean_t have_addr, db_expr_t	count, char* modif)
 	t[1] = tEOL;
 
 	/* check the presence of an address */
-	if (have_addr) {
-		db_printf("Address: %x\n", addr);	
-	} else {
+	if (!have_addr) {
 		db_printf("Address not supplied.\n");
 		return;
 	}
