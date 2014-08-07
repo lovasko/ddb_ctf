@@ -44,9 +44,6 @@ db_hello_cmd(db_expr_t addr, boolean_t have_addr, db_expr_t	count, char* modif)
 		return;
 	}
 
-	db_printf("Count: %d\n", count);
-	db_printf("Modif: '%s'\n", modif);
-
 	/* read one or two arguments */
 	for (i = 0; i < 2; i++) {
 		t[i] = db_read_token();
