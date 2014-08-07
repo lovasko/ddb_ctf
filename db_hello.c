@@ -59,7 +59,7 @@ db_hello_cmd(db_expr_t addr, boolean_t have_addr, db_expr_t	count, char* modif)
 			break;
 
 		/* copy the token string to my memory */
-		for (idx = 0; idx < TOK_STRING_SIZE || db_tok_string[idx]; idx++)
+		for (idx = 0; idx < TOK_STRING_SIZE && db_tok_string[idx]; idx++)
 			token_string[i][idx] = db_tok_string[idx];
 
 		token_string_size[i] = idx;
@@ -75,18 +75,20 @@ db_hello_cmd(db_expr_t addr, boolean_t have_addr, db_expr_t	count, char* modif)
 
 	/* clear the type name string */
 	for (idx = 0; idx < TOK_STRING_SIZE*2; idx++)
-		type_name[idx] = 'W';
+		type_name[idx] = '\0';
 	
 	/* copy the first additional argument to the final type name */
-	for (idx = 0;	idx < TOK_STRING_SIZE; idx++)
+	for (idx = 0;	idx < token_string_size[0]; idx++)
 		type_name[idx] = token_string[0][idx];
 	
 	/* append a space character */
-	type_name[idx++] = ' ';
+	type_name[idx] = ' ';
+	idx++;
 
+	/* copy the second argument if it exists */
 	if (t[1] != tEOL) {
-		for (;	idx < TOK_STRING_SIZE*2; idx++)
-			type_name[idx] = token_string[1][idx - TOK_STRING_SIZE];
+		for (; idx < token_string_size[0] + 1 + token_string_size[1]; idx++)
+			type_name[idx] = token_string[1][idx - token_string_size[0] - 1];
 	}
 
 	db_printf("Type name = '%s'", type_name);
