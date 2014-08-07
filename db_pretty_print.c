@@ -51,6 +51,17 @@ unsigned int token_string_size[2];
  */
 char type_name[TOK_STRING_SIZE*2 + 1];
 
+static void
+db_pretty_print()
+{
+	linker_ctf_t kernel_ctf_data;
+
+	if (!linker_ctf_get(linker_kernel_file, &kernel_ctf_data)) {
+		db_printf("ERROR: Unable to load the kernel CTF data.\n");
+		return;
+	}
+}
+
 void
 db_pretty_print_cmd(db_expr_t addr, boolean_t have_addr, db_expr_t count, 
 	char* modif)
@@ -112,5 +123,6 @@ db_pretty_print_cmd(db_expr_t addr, boolean_t have_addr, db_expr_t count,
 	}
 
 	db_printf("Type name = '%s'", type_name);
+	db_pretty_print();
 }
 
