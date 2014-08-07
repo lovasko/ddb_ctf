@@ -52,7 +52,8 @@ unsigned int token_string_size[2];
 char type_name[TOK_STRING_SIZE*2 + 1];
 
 void
-db_hello_cmd(db_expr_t addr, boolean_t have_addr, db_expr_t	count, char* modif)
+db_pretty_print_cmd(db_expr_t addr, boolean_t have_addr, db_expr_t count, 
+	char* modif)
 {
 	int t[2];
 	unsigned int idx;

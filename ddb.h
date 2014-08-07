@@ -226,7 +226,7 @@ db_cmdfcn_t	db_delete_cmd;
 db_cmdfcn_t	db_deletehwatch_cmd;
 db_cmdfcn_t	db_deletewatch_cmd;
 db_cmdfcn_t	db_examine_cmd;
-db_cmdfcn_t	db_hello_cmd;
+db_cmdfcn_t	db_pretty_print_cmd;
 db_cmdfcn_t	db_findstack_cmd;
 db_cmdfcn_t	db_hwatchpoint_cmd;
 db_cmdfcn_t	db_listbreak_cmd;
