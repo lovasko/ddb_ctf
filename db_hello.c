@@ -28,9 +28,7 @@
 #include <sys/queue.h>
 #include <sys/linker.h>
 #include <sys/systm.h>
-
 #include <ddb/ddb.h>
-
 #include <ddb/db_lex.h>
 #include <ddb/db_output.h>
 #include <ddb/db_command.h>
